@@ -1,0 +1,40 @@
+<div class="flex justify-center items-center h-full w-full">
+    <div class="w-3/4">
+        <div class="flex justify-center items-center mb-2">
+            <p>{{currentQuestionNumber}}/{{totalQuestionNumber}}</p>
+        </div>
+        @for(question of lstQuestion; track question.Id){
+        <div class="border border-red-500 mb-3 rounded w-full">
+            <div class="bg-red-500 px-3 py-2">
+                <h5>{{question.Question}}</h5>
+            </div>
+            @for(option of question.Options; track option.Id){
+            <div class="px-3 py-3">
+                <div class="flex items-center">
+                    <div class="mr-2">
+                        <input type="radio" name="option.Id">
+                    </div>
+                    <div>
+                        <label for="{{option.Option}}">{{option.Option}}</label>
+                    </div>
+                </div>
+            </div>
+            }
+        </div>
+        }
+        <div class="flex justify-between items-center">
+            <div>
+                <button class="inline px-3 py-2 bg-red-500 text-white rounded cursor-pointer"
+                    (click)="onPrevius()">Previus<i class="ml-1 fa-solid fa-arrow-left"></i></button>
+            </div>
+            <div>
+                @if(currentQuestionNumber < 10){ <button class="px-3 py-2 bg-blue-500 text-white rounded cursor-pointer"
+                    (click)="onNext()">Next<i class="ml-1 fa-solid fa-arrow-right"></i></button>
+                    }@else{
+                    <button class="px-3 py-2 bg-blue-500 text-white rounded cursor-pointer"
+                        (click)="onSubmit()">Submit</button>
+                    }
+            </div>
+        </div>
+    </div>
+</div>
