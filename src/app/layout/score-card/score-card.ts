@@ -8,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class ScoreCard {
 
+  score: number = 8;
+  totalQuestions: number = 10;
+  
+  onRestartQuiz(){
+    window.location.href = '/';
+  }
 }
