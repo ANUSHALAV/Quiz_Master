@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { QuizQuestionAnswere } from '../../quiz-question-answere';
+import { FormsModule } from '@angular/forms';
+import { ScoreCard } from '../score-card/score-card';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-question-playground',
-  imports: [],
+  imports: [FormsModule,ScoreCard],
   templateUrl: './question-playground.html',
   styleUrl: './question-playground.scss',
 })
@@ -13,15 +16,19 @@ export class QuestionPlayground implements OnInit{
   lstQuestion:any[]=[];
   totalQuestionNumber: number = 10;
   currentQuestionNumber: number = 1;
+  selectedOption:number=0;
+  totalMarks:number=0;
+  isQuizCompleted:boolean=false;
+  randomQuestionNumbers:number=0;
 
   constructor(
     private questionAnswere:QuizQuestionAnswere
   ){
     this.lstQuestions= this.questionAnswere.getQuestionAnswere();
-    this.lstQuestion = this.lstQuestions.filter(q => q.Id === this.currentQuestionNumber);
   }
 
   ngOnInit():void{
+    this.lstQuestion = this.lstQuestions.filter(q => q.Id === this.currentQuestionNumber);
   }
 
   onPrevius():void {
@@ -32,6 +39,7 @@ export class QuestionPlayground implements OnInit{
   }
 
   onNext():void {
+    this.marksCalculation();
     if (this.currentQuestionNumber < 10) {
       this.currentQuestionNumber++;
       this.lstQuestion=this.lstQuestions.filter(q=>q.Id===this.currentQuestionNumber);
@@ -39,9 +47,20 @@ export class QuestionPlayground implements OnInit{
   }
 
   onSubmit():void {
+    this.marksCalculation();
     let isSubmit = confirm('Do you want to submit your answer');
     if (isSubmit) {
-      window.location.href = '/scoreCard';
+      this.isQuizCompleted=true;
+    }else{
+      this.isQuizCompleted=false;
     }
   }
+
+  marksCalculation(){
+    if(this.selectedOption==this.lstQuestion[0].Answere){
+      this.totalMarks++;
+    }
+    this.selectedOption=0;
+  }
+
 }

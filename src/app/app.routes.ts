@@ -7,6 +7,5 @@ import { ScoreCard } from './layout/score-card/score-card';
 export const routes: Routes = [
     { path: '', component: QuizStart },
     { path: 'quiz', component: QuestionPlayground },
-    { path: 'scoreCard', component: ScoreCard },
     { path: '**', component: PageNotFound }
 ];

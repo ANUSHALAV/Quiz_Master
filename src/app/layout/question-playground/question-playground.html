@@ -1,9 +1,10 @@
+@if(!isQuizCompleted){
 <div class="flex justify-center items-center h-full w-full">
     <div class="w-3/4">
         <div class="flex justify-center items-center mb-2 font-bold">
             <h4>Question {{currentQuestionNumber}} of {{totalQuestionNumber}}</h4>
         </div>
-        <hr/>
+        <hr />
         @for(question of lstQuestion; track question.Id){
         <div class="mb-3 rounded w-full">
             <div class="px-3 py-2 font-bold">
@@ -13,7 +14,7 @@
             <div class="px-3 py-3">
                 <div class="flex items-center">
                     <div class="mr-2">
-                        <input type="radio" name="option.Id">
+                        <input type="radio" name="option.Id" [(ngModel)]="selectedOption" [value]="option.Id" />
                     </div>
                     <div>
                         <label for="{{option.Id}}">{{option.Option}}</label>
@@ -29,8 +30,9 @@
                     (click)="onPrevius()">Previus<i class="ml-1 fa-solid fa-arrow-left"></i></button>
             </div>
             <div>
-                @if(currentQuestionNumber < 10){ <button class="px-3 py-2 bg-red-700 text-white rounded-lg cursor-pointer"
-                    (click)="onNext()">Next<i class="ml-1 fa-solid fa-arrow-right"></i></button>
+                @if(currentQuestionNumber < 10){ <button
+                    class="px-3 py-2 bg-red-700 text-white rounded-lg cursor-pointer" (click)="onNext()">Next<i
+                        class="ml-1 fa-solid fa-arrow-right"></i></button>
                     }@else{
                     <button class="px-3 py-2 bg-red-700 text-white rounded-lg cursor-pointer"
                         (click)="onSubmit()">Submit</button>
@@ -39,3 +41,10 @@
         </div>
     </div>
 </div>
+}
+
+@if(isQuizCompleted){
+<div class="h-full w-full">
+    <app-score-card [totalMarks]="totalMarks" [totalQuestionNumber]="totalQuestionNumber"></app-score-card>
+</div>
+}

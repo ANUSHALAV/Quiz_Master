@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, input } from '@angular/core';
 
 @Component({
   selector: 'app-score-card',
@@ -7,9 +7,9 @@ import { Component } from '@angular/core';
   styleUrl: './score-card.scss',
 })
 export class ScoreCard {
+  @Input() totalQuestionNumber: number = 0;
+  @Input() totalMarks: number = 0;
 
-  score: number = 8;
-  totalQuestions: number = 10;
   
   onRestartQuiz(){
     window.location.href = '/';
