@@ -9,7 +9,8 @@ import { Component, Input, input } from '@angular/core';
 export class ScoreCard {
   @Input() totalQuestionNumber: number = 0;
   @Input() totalMarks: number = 0;
-
+  @Input() wrongAnswer: number = 0;
+  @Input() notAttendedQuestion: number = 0;
   
   onRestartQuiz(){
     window.location.href = '/';

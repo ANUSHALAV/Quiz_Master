@@ -1,6 +1,40 @@
-<div class="h-full w-full flex justify-center items-center bg-image">
-    <div>
-        <h1 class="mb-3 font-bold">Welcome to Quiz Master</h1>
-        <button class="bg-blue-500 text-white px-3 py-2 rounded-lg cursor-pointer" (click)="onStartQuiz()">Start Quiz <i class="fa-solid fa-arrow-right"></i></button>
+<div class="min-h-screen flex justify-center items-center bg-gradient-to-br from-red-50 to-red-100 px-4">
+    <div class="bg-white shadow-xl rounded-2xl w-full max-w-3xl p-8 border border-[var(--border-color)] text-center">
+
+        <div class="mb-6">
+            <h1 class="font-bold mb-2">Quiz Master</h1>
+            <p class="text-[var(--text-secondary-color)]">Test your knowledge and challenge yourself</p>
+        </div>
+
+        <hr class="mb-6 border-[var(--border-color)]" />
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+            <div class="bg-slate-50 rounded-xl p-4 border border-[var(--border-color)]">
+                <i class="fa-solid fa-list-check text-red-600 text-xl mb-2"></i>
+                <h4 class="font-semibold">Multiple Questions</h4>
+                <p class="text-sm">Answer all questions carefully</p>
+            </div>
+
+            <div class="bg-slate-50 rounded-xl p-4 border border-[var(--border-color)]">
+                <i class="fa-solid fa-clock text-red-600 text-xl mb-2"></i>
+                <h4 class="font-semibold">No Time Limit</h4>
+                <p class="text-sm">Take your time and focus</p>
+            </div>
+
+            <div class="bg-slate-50 rounded-xl p-4 border border-[var(--border-color)]">
+                <i class="fa-solid fa-trophy text-red-600 text-xl mb-2"></i>
+                <h4 class="font-semibold">Instant Result</h4>
+                <p class="text-sm">
+                    Get score after submission
+                </p>
+            </div>
+        </div>
+
+        <button
+            class="px-8 py-3 rounded-xl font-medium bg-red-600 hover:bg-red-700 text-white flex items-center justify-center gap-2 mx-auto transition"
+            (click)="onStartQuiz()">Start Quiz
+            <i class="fa-solid fa-arrow-right"></i>
+        </button>
+
     </div>
 </div>

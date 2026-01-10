@@ -1,10 +1,60 @@
-<div class="flex justify-center items-center h-full w-full">
-    <div class="border border-gray-300 rounded-lg p-6 w-96 text-center">
-        <h2 class="text-2xl font-bold mb-4">Quiz Completed!</h2>
-        <p class="text-lg mb-2">Your Score:</p>
-        <p class="text-4xl font-extrabold text-red-600 mb-4">{{totalMarks}} / {{totalQuestionNumber}}</p>
-        <p class="text-4xl font-extrabold text-red-600 mb-4">Correct : {{totalMarks}}</p>
-        <p class="text-4xl font-extrabold text-red-600 mb-4">Wrong : {{totalQuestionNumber - totalMarks}}</p>
-        <button class="bg-red-700 text-white px-4 py-2 rounded-lg cursor-pointer" (click)="onRestartQuiz()">Restart Quiz <i class="fa-solid fa-arrow-rotate-left"></i></button>
+<div class="min-h-screen flex items-center justify-center bg-gradient-to-br from-red-50 to-red-100 p-4">
+    <div class="bg-white shadow-2xl rounded-2xl p-8 w-full max-w-md text-center">
+
+        <!-- Trophy Icon -->
+        <div class="flex justify-center mb-4">
+            <div class="bg-red-100 text-red-600 p-4 rounded-full">
+                <i class="fa-solid fa-trophy text-3xl"></i>
+            </div>
+        </div>
+
+        <!-- Heading -->
+        <h2 class="text-3xl font-extrabold text-gray-800 mb-2">
+            Quiz Completed 🎉
+        </h2>
+        <p class="text-gray-500 mb-6">
+            Here is your performance summary
+        </p>
+
+        <!-- Score -->
+        <div class="bg-red-50 border border-red-200 rounded-xl py-4 mb-6">
+            <p class="text-sm text-gray-500">Your Score</p>
+            <p class="text-4xl font-extrabold text-red-600">
+                {{ totalMarks }} / {{ totalQuestionNumber }}
+            </p>
+        </div>
+
+        <!-- Stats -->
+        <div class="grid grid-cols-3 gap-3 mb-6">
+            <div class="bg-green-50 rounded-lg p-3">
+                <p class="text-sm text-gray-500">Correct</p>
+                <p class="text-xl font-bold text-green-600">
+                    {{ totalMarks }}
+                </p>
+            </div>
+
+            <div class="bg-red-50 rounded-lg p-3">
+                <p class="text-sm text-gray-500">Wrong</p>
+                <p class="text-xl font-bold text-red-600">
+                    {{ wrongAnswer }}
+                </p>
+            </div>
+
+            <div class="bg-yellow-50 rounded-lg p-3">
+                <p class="text-sm text-gray-500">Skipped</p>
+                <p class="text-xl font-bold text-yellow-600">
+                    {{ notAttendedQuestion }}
+                </p>
+            </div>
+        </div>
+
+        <!-- Restart Button -->
+        <button
+            class="w-full bg-red-600 hover:bg-red-700 transition text-white font-semibold py-3 rounded-xl flex items-center justify-center gap-2"
+            (click)="onRestartQuiz()">
+            Restart Quiz
+            <i class="fa-solid fa-arrow-rotate-left"></i>
+        </button>
+
     </div>
 </div>

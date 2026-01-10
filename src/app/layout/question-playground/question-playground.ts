@@ -18,6 +18,8 @@ export class QuestionPlayground implements OnInit{
   currentQuestionNumber: number = 1;
   selectedOption:number=0;
   totalMarks:number=0;
+  wrongAnswer:number=0;
+  notAttendedQuestion:number=0;
   isQuizCompleted:boolean=false;
   randomQuestionNumbers:number=0;
 
@@ -57,8 +59,13 @@ export class QuestionPlayground implements OnInit{
   }
 
   marksCalculation(){
-    if(this.selectedOption==this.lstQuestion[0].Answere){
+    if(this.selectedOption==0){
+      this.notAttendedQuestion++;
+    }
+    else if(this.selectedOption==this.lstQuestion[0].Answere){
       this.totalMarks++;
+    }else if(this.selectedOption!=this.lstQuestion[0].Answere){
+      this.wrongAnswer++;
     }
     this.selectedOption=0;
   }

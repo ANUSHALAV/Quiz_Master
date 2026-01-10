@@ -1,43 +1,64 @@
 @if(!isQuizCompleted){
-<div class="flex justify-center items-center h-full w-full">
-    <div class="w-3/4">
-        <div class="flex justify-center items-center mb-2 font-bold">
-            <h4>Question {{currentQuestionNumber}} of {{totalQuestionNumber}}</h4>
-        </div>
-        <hr />
-        @for(question of lstQuestion; track question.Id){
-        <div class="mb-3 rounded w-full">
-            <div class="px-3 py-2 font-bold">
-                <h2>{{currentQuestionNumber}}. {{question.Question}}</h2>
+<div class="min-h-screen flex justify-center items-center bg-gradient-to-br from-red-50 to-red-100 p-4">
+
+    <div class="bg-white shadow-2xl rounded-2xl w-full max-w-3xl p-6">
+        <div class="mb-4">
+            <div class="flex justify-between items-center mb-2">
+                <h4 class="font-semibold text-gray-700">
+                    Question {{currentQuestionNumber}} of {{totalQuestionNumber}}
+                </h4>
+                <span class="text-sm text-red-600 font-bold">
+                    {{currentQuestionNumber}} / {{totalQuestionNumber}}
+                </span>
             </div>
-            @for(option of question.Options; track option.Id){
-            <div class="px-3 py-3">
-                <div class="flex items-center">
-                    <div class="mr-2">
-                        <input type="radio" name="option.Id" [(ngModel)]="selectedOption" [value]="option.Id" />
-                    </div>
-                    <div>
-                        <label for="{{option.Id}}">{{option.Option}}</label>
-                    </div>
+
+            <div class="w-full bg-gray-200 rounded-full h-2">
+                <div class="bg-red-600 h-2 rounded-full transition-all duration-300"
+                    [style.width.%]="(currentQuestionNumber / totalQuestionNumber) * 100">
                 </div>
             </div>
-            }
+        </div>
+
+        <hr class="mb-4" />
+
+        @for(question of lstQuestion; track question.Id){
+        <div class="mb-6">
+            <h2 class="text-lg font-bold text-gray-800 mb-4">
+                {{currentQuestionNumber}}. {{question.Question}}
+            </h2>
+
+            <div class="space-y-3">
+                @for(option of question.Options; track option.Id){
+                <label class="flex items-center gap-3 p-3 border rounded-xl cursor-pointer
+                           hover:bg-red-50 transition">
+                    <input type="radio" name="question" class="accent-red-600 w-4 h-4" [(ngModel)]="selectedOption"
+                        [value]="option.Id" />
+                    <span class="text-gray-700 font-medium">
+                        {{option.Option}}
+                    </span>
+                </label>
+                }
+            </div>
         </div>
         }
-        <div class="flex justify-center items-center gap-3">
-            <div>
-                <button class="inline px-3 py-2 bg-red-700 text-white rounded-lg cursor-pointer"
-                    (click)="onPrevius()">Previus<i class="ml-1 fa-solid fa-arrow-left"></i></button>
-            </div>
-            <div>
-                @if(currentQuestionNumber < 10){ <button
-                    class="px-3 py-2 bg-red-700 text-white rounded-lg cursor-pointer" (click)="onNext()">Next<i
-                        class="ml-1 fa-solid fa-arrow-right"></i></button>
-                    }@else{
-                    <button class="px-3 py-2 bg-red-700 text-white rounded-lg cursor-pointer"
-                        (click)="onSubmit()">Submit</button>
-                    }
-            </div>
+
+        <div class="flex justify-between mt-6">
+
+            <button class="px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded-xl font-semibold flex items-center gap-2"
+                (click)="onPrevius()"><i class="fa-solid fa-arrow-left"></i>Previous
+            </button>
+
+            @if(currentQuestionNumber < totalQuestionNumber) { <button
+                class="px-6 py-2 bg-red-600 hover:bg-red-700 text-white rounded-xl font-semibold flex items-center gap-2"
+                (click)="onNext()">Next<i class="fa-solid fa-arrow-right"></i>
+                </button>
+                }
+                @else
+                {
+                <button class="px-6 py-2 bg-green-600 hover:bg-green-700 text-white rounded-xl font-semibold"
+                    (click)="onSubmit()">Submit Quiz
+                </button>
+                }
         </div>
     </div>
 </div>
@@ -45,6 +66,8 @@
 
 @if(isQuizCompleted){
 <div class="h-full w-full">
-    <app-score-card [totalMarks]="totalMarks" [totalQuestionNumber]="totalQuestionNumber"></app-score-card>
+    <app-score-card [totalMarks]="totalMarks" [wrongAnswer]="wrongAnswer" [notAttendedQuestion]="notAttendedQuestion"
+        [totalQuestionNumber]="totalQuestionNumber">
+    </app-score-card>
 </div>
 }
