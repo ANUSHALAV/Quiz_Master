@@ -7,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrl: './page-not-found.scss',
 })
 export class PageNotFound {
-
+  onGoToHome(){
+    window.location.href = '/';
+  }
 }

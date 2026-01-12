@@ -21,30 +21,36 @@ export class QuestionPlayground implements OnInit{
   wrongAnswer:number=0;
   notAttendedQuestion:number=0;
   isQuizCompleted:boolean=false;
-  randomQuestionNumbers:number=0;
+  randomQuestionNumber:number=0;
 
   constructor(
     private questionAnswere:QuizQuestionAnswere
   ){
     this.lstQuestions= this.questionAnswere.getQuestionAnswere();
+    this.genrateRandomQuestionNumber();
   }
 
   ngOnInit():void{
-    this.lstQuestion = this.lstQuestions.filter(q => q.Id === this.currentQuestionNumber);
+    this.lstQuestion = this.lstQuestions.filter(q => q.Id === this.randomQuestionNumber);
+  }
+
+  genrateRandomQuestionNumber():void {
+    this.randomQuestionNumber = Math.floor(Math.random() * this.lstQuestions.length) + 1;
   }
 
   onPrevius():void {
     if (this.currentQuestionNumber > 1) {
       this.currentQuestionNumber--;
-      this.lstQuestion=this.lstQuestions.filter(q=>q.Id===this.currentQuestionNumber)
+      this.lstQuestion=this.lstQuestions.filter(q=>q.Id===this.randomQuestionNumber)
     }
   }
 
   onNext():void {
     this.marksCalculation();
+    this.genrateRandomQuestionNumber();
     if (this.currentQuestionNumber < 10) {
       this.currentQuestionNumber++;
-      this.lstQuestion=this.lstQuestions.filter(q=>q.Id===this.currentQuestionNumber);
+      this.lstQuestion=this.lstQuestions.filter(q=>q.Id===this.randomQuestionNumber);
     }
   }
 

@@ -104,7 +104,108 @@ export class QuizQuestionAnswere {
         { Id: 3, Option: 'Thailand' }
       ],
       Answere: 2
+    },
+    {
+      Id: 11,
+      Question: 'Which is the longest river in the world?',
+      Options: [
+        { Id: 1, Option: 'Amazon River' },
+        { Id: 2, Option: 'Nile River' },
+        { Id: 3, Option: 'Yangtze River' }
+      ],
+      Answere: 2
+    },
+    {
+      Id: 12,
+      Question: 'Who wrote the Indian National Anthem?',
+      Options: [
+        { Id: 1, Option: 'Bankim Chandra Chatterjee' },
+        { Id: 2, Option: 'Rabindranath Tagore' },
+        { Id: 3, Option: 'Sarojini Naidu' }
+      ],
+      Answere: 2
+    },
+    {
+      Id: 13,
+      Question: 'Which is the largest desert in the world?',
+      Options: [
+        { Id: 1, Option: 'Sahara Desert' },
+        { Id: 2, Option: 'Gobi Desert' },
+        { Id: 3, Option: 'Antarctic Desert' }
+      ],
+      Answere: 3
+    },
+    {
+      Id: 14,
+      Question: 'What is the national flower of India?',
+      Options: [
+        { Id: 1, Option: 'Rose' },
+        { Id: 2, Option: 'Lotus' },
+        { Id: 3, Option: 'Sunflower' }
+      ],
+      Answere: 2
+    },
+    {
+      Id: 15,
+      Question: 'Which planet is closest to the Sun?',
+      Options: [
+        { Id: 1, Option: 'Venus' },
+        { Id: 2, Option: 'Earth' },
+        { Id: 3, Option: 'Mercury' }
+      ],
+      Answere: 3
+    },
+    {
+      Id: 16,
+      Question: 'Who was the first Prime Minister of India?',
+      Options: [
+        { Id: 1, Option: 'Mahatma Gandhi' },
+        { Id: 2, Option: 'Jawaharlal Nehru' },
+        { Id: 3, Option: 'Dr. Rajendra Prasad' }
+      ],
+      Answere: 2
+    },
+    {
+      Id: 17,
+      Question: 'Which organ purifies blood in the human body?',
+      Options: [
+        { Id: 1, Option: 'Heart' },
+        { Id: 2, Option: 'Liver' },
+        { Id: 3, Option: 'Kidney' }
+      ],
+      Answere: 3
+    },
+    {
+      Id: 18,
+      Question: 'Which is the fastest land animal?',
+      Options: [
+        { Id: 1, Option: 'Tiger' },
+        { Id: 2, Option: 'Cheetah' },
+        { Id: 3, Option: 'Leopard' }
+      ],
+      Answere: 2
+    },
+    {
+      Id: 19,
+      Question: 'How many colors are there in a rainbow?',
+      Options: [
+        { Id: 1, Option: '6' },
+        { Id: 2, Option: '7' },
+        { Id: 3, Option: '8' }
+      ],
+      Answere: 2
+    },
+    {
+      Id: 20,
+      Question: 'Which is the smallest country in the world?',
+      Options: [
+        { Id: 1, Option: 'Monaco' },
+        { Id: 2, Option: 'Vatican City' },
+        { Id: 3, Option: 'Maldives' }
+      ],
+      Answere: 2
     }
+
   ];
 
 
