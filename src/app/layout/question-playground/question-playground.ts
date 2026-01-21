@@ -21,36 +21,45 @@ export class QuestionPlayground implements OnInit{
   wrongAnswer:number=0;
   notAttendedQuestion:number=0;
   isQuizCompleted:boolean=false;
-  randomQuestionNumber:number=0;
+  randomQuestionNumbers:number[]=[];
+  lstQuestionAnswere:any[]=[];
 
   constructor(
     private questionAnswere:QuizQuestionAnswere
   ){
     this.lstQuestions= this.questionAnswere.getQuestionAnswere();
-    this.genrateRandomQuestionNumber();
   }
 
-  ngOnInit():void{
-    this.lstQuestion = this.lstQuestions.filter(q => q.Id === this.randomQuestionNumber);
+  ngOnInit(): void {
+    this.genrateRandomQuestionNumbers();
+    this.getQuestionForTest();
+    this.lstQuestion.push(this.lstQuestionAnswere[this.currentQuestionNumber - 1]);
   }
 
-  genrateRandomQuestionNumber():void {
-    this.randomQuestionNumber = Math.floor(Math.random() * this.lstQuestions.length) + 1;
+  genrateRandomQuestionNumbers(): void {
+    for (let i = 1; i <= 10; i++) {
+      this.randomQuestionNumbers.push(Math.floor(Math.random() * this.lstQuestions.length) + 1);
+    }
+  }
+
+  getQuestionForTest(): void {
+    for (let i = 0; i < 10; i++) {
+      this.lstQuestionAnswere.push(this.lstQuestions.find(q => q.Id === this.randomQuestionNumbers[i]));
+    }
   }
 
   onPrevius():void {
     if (this.currentQuestionNumber > 1) {
       this.currentQuestionNumber--;
-      this.lstQuestion=this.lstQuestions.filter(q=>q.Id===this.randomQuestionNumber)
+      this.lstQuestion=this.lstQuestions.filter(q=>q.Id===this.randomQuestionNumbers[this.currentQuestionNumber-1]);
     }
   }
 
   onNext():void {
     this.marksCalculation();
-    this.genrateRandomQuestionNumber();
     if (this.currentQuestionNumber < 10) {
       this.currentQuestionNumber++;
-      this.lstQuestion=this.lstQuestions.filter(q=>q.Id===this.randomQuestionNumber);
+      this.lstQuestion=this.lstQuestions.filter(q=>q.Id===this.randomQuestionNumbers[this.currentQuestionNumber-1]);
     }
   }
 
