@@ -16,7 +16,7 @@ export class QuestionPlayground implements OnInit{
   lstQuestion:any[]=[];
   totalQuestionNumber: number = 10;
   currentQuestionNumber: number = 1;
-  selectedOption:number=0;
+  selectedOption:[]=[];
   totalMarks:number=0;
   wrongAnswer:number=0;
   notAttendedQuestion:number=0;
@@ -56,6 +56,8 @@ export class QuestionPlayground implements OnInit{
   }
 
   onNext():void {
+    console.log(this.selectedOption[this.currentQuestionNumber-1]);
+    
     this.marksCalculation();
     if (this.currentQuestionNumber < 10) {
       this.currentQuestionNumber++;
@@ -74,15 +76,14 @@ export class QuestionPlayground implements OnInit{
   }
 
   marksCalculation(){
-    if(this.selectedOption==0){
+    if(this.selectedOption[this.currentQuestionNumber-1]==undefined){
       this.notAttendedQuestion++;
     }
-    else if(this.selectedOption==this.lstQuestion[0].Answere){
+    else if(this.selectedOption[this.currentQuestionNumber-1]==this.lstQuestion[0].Answere){
       this.totalMarks++;
-    }else if(this.selectedOption!=this.lstQuestion[0].Answere){
+    }else if(this.selectedOption[this.currentQuestionNumber-1]!=this.lstQuestion[0].Answere){
       this.wrongAnswer++;
     }
-    this.selectedOption=0;
   }
 
 }
