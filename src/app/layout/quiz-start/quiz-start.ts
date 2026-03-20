@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-quiz-start',
@@ -7,8 +8,10 @@ import { Component } from '@angular/core';
   styleUrl: './quiz-start.scss',
 })
 export class QuizStart {
+  
+  constructor(private _router: Router) { }
 
-  onStartQuiz(){
-    window.location.href = '/quiz';
+  onStartQuiz() {
+    this._router.navigate(['/quiz']);
   }
 }

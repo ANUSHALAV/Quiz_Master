@@ -56,8 +56,6 @@ export class QuestionPlayground implements OnInit{
   }
 
   onNext():void {
-    console.log(this.selectedOption[this.currentQuestionNumber-1]);
-    
     this.marksCalculation();
     if (this.currentQuestionNumber < 10) {
       this.currentQuestionNumber++;
