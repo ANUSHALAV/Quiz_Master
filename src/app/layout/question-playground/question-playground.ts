@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { QuizQuestionAnswere } from '../../quiz-question-answere';
 import { FormsModule } from '@angular/forms';
 import { ScoreCard } from '../score-card/score-card';
-import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-question-playground',
