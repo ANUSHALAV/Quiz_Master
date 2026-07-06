@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-score-card',
@@ -11,8 +12,12 @@ export class ScoreCard {
   @Input() totalMarks: number = 0;
   @Input() wrongAnswer: number = 0;
   @Input() notAttendedQuestion: number = 0;
-  
-  onRestartQuiz(){
-    window.location.href = '/';
+
+  constructor(
+    private _router: Router
+  ) { }
+
+  onRestartQuiz() {
+    this._router.navigate(['/']);
   }
 }
